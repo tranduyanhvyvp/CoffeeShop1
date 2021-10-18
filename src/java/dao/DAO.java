@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.account;
 import model.category;
 import model.product;
 
@@ -199,15 +200,15 @@ public class DAO {
         }
         return list;
     }
-    
-        public List<product> searchDish(String txt) {
+
+    public List<product> searchDish(String txt) {
         List<product> list = new ArrayList<>();
         String query = "select * from product\n"
                 + "where [name] like ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1,"%"+txt+"%");
+            ps.setString(1, "%" + txt + "%");
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new product(rs.getInt(1),
@@ -219,6 +220,28 @@ public class DAO {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public account login(String user, String pass) {
+        String query = "select * from Account\n"
+                + "where username =?\n"
+                + "and pass =?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5));
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public static void main(String[] args) {

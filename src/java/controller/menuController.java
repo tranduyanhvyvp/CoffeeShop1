@@ -55,6 +55,9 @@ public class menuController extends HttpServlet {
         request.setAttribute("listD", listD);
         request.setAttribute("listDr", listDr);
         request.setAttribute("listC", listC);
+        
+        
+        
         request.getRequestDispatcher("menu.jsp").forward(request, response);
     }
 
