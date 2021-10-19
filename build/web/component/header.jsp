@@ -22,6 +22,7 @@
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a href="/CoffeeShop/home" class="nav-link">Home</a></li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"  id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/CoffeeShop/menu" >Menu</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -31,17 +32,46 @@
                                 </c:forEach>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="services.jsp" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="about.jsp" class="nav-link">About</a></li>
+
+
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="room.jsp" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="loginsignup/login.jsp">Login</a>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a class="dropdown-item" href="loginsignup/login.jsp">Login</a>
+                                </c:if>
+
+                                <c:if test="${sessionScope.acc != null}">
+                                    <a class="dropdown-item" href="/CoffeeShop/logout">Logout</a>
+                                </c:if>
+
+
                                 <a class="dropdown-item" href="loginsignup/signUp.jsp">Sign Up</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="room.jsp" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">US</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="contact.jsp">Contact</a>
+                                <a class="dropdown-item" href="about.jsp">About</a>
+                                <a class="dropdown-item" href="services.jsp">Service</a>
+                            </div>
+                        </li>
+
+                        <c:if test="${sessionScope.acc.isSell==1}">
+                            <li class="nav-item"><a class="nav-link">Manager Account</a></li>
+                            </c:if>
+                            
+                        <c:if test="${sessionScope.acc.isAdmin==1}">
+                            <li class="nav-item"><a class="nav-link">Manager Product</a></li>
+                            </c:if>
+
+                        <c:if test="${sessionScope.acc != null}">
+                            <li class="nav-item"><a class="nav-link">Hi, ${sessionScope.acc.user}</a></li>
+
+                        </c:if>
+
                         <li class="nav-item cart"><a href="cart.jsp" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
                     </ul>
                 </div>

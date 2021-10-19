@@ -5,7 +5,6 @@
  */
 package controller;
 
-import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.account;
 
 /**
  *
  * @author os
  */
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "logoutController", urlPatterns = {"/logout"})
+public class logoutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +33,9 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        DAO dao = new DAO();
-        account a = dao.login(user, pass);
-        if(a==null){
-            response.sendRedirect("/CoffeeShop/loginsignup/loginfailse.jsp");
-            
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            session.setMaxInactiveInterval(600);
-            request.getRequestDispatcher("/home").forward(request, response);
-        }
+        HttpSession session = request.getSession();
+        session.removeAttribute("acc");
+        response.sendRedirect("home");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

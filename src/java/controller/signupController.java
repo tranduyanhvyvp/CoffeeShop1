@@ -13,15 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.account;
 
 /**
  *
  * @author os
  */
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "signupController", urlPatterns = {"/signup"})
+public class signupController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +35,20 @@ public class loginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("user");
+        //String email = request.getParameter("email");
         String pass = request.getParameter("pass");
-        DAO dao = new DAO();
-        account a = dao.login(user, pass);
-        if(a==null){
-            response.sendRedirect("/CoffeeShop/loginsignup/loginfailse.jsp");
-            
+        String repass = request.getParameter("repass");
+        if(!pass.equals(repass)){
+            response.sendRedirect("/CoffeeShop/loginsignup/signUpequal.jsp");
         }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            session.setMaxInactiveInterval(600);
-            request.getRequestDispatcher("/home").forward(request, response);
+            DAO dao = new DAO();
+            account a = dao.checkAccountExist(user);
+            if(a==null){
+                dao.signup(user, pass);
+                response.sendRedirect("/CoffeeShop/home");
+            }else{
+                response.sendRedirect("/CoffeeShop/loginsignup/signUpExist.jsp");
+            }
         }
     }
 

@@ -12,12 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up Form by Colorlib</title>
-    <script> 
-            function doUpdate(id)
-            {
-                window.location.href = "update?id=" + id;
-            }
-        </script>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -35,6 +29,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
+                        <p style="color: red">Account is exist. Please check again !!</p>
                         <form action="/CoffeeShop/signup" method="POST" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
