@@ -65,6 +65,25 @@ public class DAO {
         return list;
     }
 
+    public List<product> getAllDish() {
+        List<product> list = new ArrayList<>();
+        String query = "select * from product\n";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getFloat(4),
+                        rs.getString(5)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public List<product> getAllDessert() {
         List<product> list = new ArrayList<>();
         String query = "select * from product\n"
@@ -265,6 +284,23 @@ public class DAO {
         return null;
     }
 
+    public int checkCateIdByPid(String id) {
+        String query = "select cateid from product\n"
+                + "where id =??";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
     public void signup(String user, String pass) {
         String query = "insert into Account\n"
                 + "values(?,?,0,0)";
@@ -273,17 +309,54 @@ public class DAO {
             ps = conn.prepareStatement(query);
             ps.setString(1, user);
             ps.setString(2, pass);
-            ps.executeUpdate();           
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void addDish(String name, String img, String price, String desc, String cateId) {
+        String query = "INSERT INTO [dbo].[product]\n"
+                + "           ([name]\n"
+                + "           ,[img]\n"
+                + "           ,[price]\n"
+                + "           ,[description]\n"
+                + "           ,[cateId])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, img);
+            ps.setString(3, price);
+            ps.setString(4, desc);
+            ps.setString(5, cateId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void delete(String id) {
+        String query = "delete from product\n"
+                + "where id = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
         } catch (Exception e) {
         }
     }
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<product> list = dao.getProductById("1");
-        category p = dao.getCategoryById("1");
-        product p1 = dao.getProductByPId("1");
-        System.out.println(p1);
+        int x = dao.checkCateIdByPid("1");
+        System.out.println("x");
+
     }
 
 }

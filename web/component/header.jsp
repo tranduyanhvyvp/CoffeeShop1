@@ -64,7 +64,7 @@
                             </c:if>
                             
                         <c:if test="${sessionScope.acc.isAdmin==1}">
-                            <li class="nav-item"><a class="nav-link">Manager Product</a></li>
+                            <li class="nav-item"><a href="manager?cid=1" class="nav-link">Manager Product</a></li>
                             </c:if>
 
                         <c:if test="${sessionScope.acc != null}">

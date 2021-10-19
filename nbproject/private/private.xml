@@ -4,17 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="CodeLearn"/>
         <group name="PRJ321">
-            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/model/account.java</file>
-            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/loginsignup/signUp.jsp</file>
-            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/loginController.java</file>
-            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/menuController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/managerController.java</file>
             <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/searchController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/manager/ManagerProduct.jsp</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/categoryController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/menu.jsp</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/deleteController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/manager/Cart.jsp</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/addController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/dao/DAO.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/model/category.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/loginController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/loginsignup/login.jsp</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/menuController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/model/product.java</file>
             <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/signupController.java</file>
             <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/component/header.jsp</file>
-            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/shop.jsp</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/cart.jsp</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/detailController.java</file>
             <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/homeController.java</file>
-            <file>file:/D:/Git/CoffeeShop/CoffeeShop/web/services.jsp</file>
             <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/logoutController.java</file>
+            <file>file:/D:/Git/CoffeeShop/CoffeeShop/src/java/controller/loadController.java</file>
         </group>
     </open-files>
 </project-private>
